@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Layout from '@/components/Layout';
 import { auth } from '@/lib/auth';
@@ -512,7 +512,7 @@ export default function ApiDocsPage() {
   const [copiedEndpoint, setCopiedEndpoint] = useState<string | null>(null);
   const router = useRouter();
 
-  useState(() => {
+  useEffect(() => {
     const currentUser = auth.getUser();
     if (!currentUser) {
       router.push('/login');

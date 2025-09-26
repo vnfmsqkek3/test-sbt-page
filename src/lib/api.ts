@@ -662,9 +662,9 @@ class ApiClient {
     }
 
     // Generate specific data for 2025.09.20 ~ 2025.09.26 period (7 days)
-    const computeData = [];
-    const storageData = [];
-    const egressData = [];
+    const computeData: any[] = [];
+    const storageData: any[] = [];
+    const egressData: any[] = [];
 
     // Base computing hours per day for acme tenant
     const baseCompute = 145; // Higher baseline for business tenant
