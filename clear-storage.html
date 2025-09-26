@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Storage</title>
+</head>
+<body>
+    <h1>Storage 초기화 도구</h1>
+    <button onclick="clearStorage()">localStorage 초기화</button>
+    <button onclick="checkStorage()">저장된 데이터 확인</button>
+    <div id="result"></div>
+    
+    <script>
+        function clearStorage() {
+            localStorage.clear();
+            document.getElementById('result').innerHTML = '<p style="color: green;">localStorage가 초기화되었습니다. 페이지를 새로고침하세요.</p>';
+        }
+        
+        function checkStorage() {
+            const tenants = localStorage.getItem('mock_tenants');
+            const result = document.getElementById('result');
+            if (tenants) {
+                const data = JSON.parse(tenants);
+                result.innerHTML = `
+                    <h3>저장된 테넌트 목록:</h3>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                    <p>총 ${data.length}개의 테넌트가 저장되어 있습니다.</p>
+                `;
+            } else {
+                result.innerHTML = '<p style="color: red;">저장된 테넌트 데이터가 없습니다.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
